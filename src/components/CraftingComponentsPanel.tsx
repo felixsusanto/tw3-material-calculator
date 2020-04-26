@@ -1,5 +1,4 @@
 import * as React from "react";
-import { CraftingComponentNameStrings } from "./typeData";
 import styled from "styled-components";
 import SelectComponents, { Select, SelectWrapper } from "./SelectComponents";
 import _ from "lodash";
@@ -16,10 +15,10 @@ const CraftingComponentPanelWrapper = styled.div`
     }
   }
 `;
-type CraftingComponent = [CraftingComponentNameStrings, number];
-type MyState = {
+type CraftingComponent = [string, number];
+type MyState = { 
   qty: number;
-  componentName: CraftingComponentNameStrings | "";
+  componentName: string;
   craftingComponents: CraftingComponent[];
 };
 
@@ -99,7 +98,7 @@ class CraftingComponentPanel extends React.Component {
               key={index}
               index={index}
               qty={qty}
-              name={name}
+              name={name} 
               onPlusClick={this.onItemQtyChange(index, true)}
               onMinusClick={this.onItemQtyChange(index, false)}
               onDeleteClick={() => {

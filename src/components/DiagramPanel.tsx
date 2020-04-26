@@ -23,9 +23,12 @@ export const DiagramContext = createContext(defaultContextValue);
 export const diagramSelectOptions: [string, string[]][] = [
   ["The Wild Hunt", bwArmorSelect]
 ];
-
+type CompState = {
+  name: string;
+  diagrams: string[];
+}
 class DiagramPanel extends React.Component {
-  state = {
+  state: CompState = {
     name: "",
     diagrams: []
   };

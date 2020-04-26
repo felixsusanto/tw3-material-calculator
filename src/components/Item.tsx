@@ -36,7 +36,7 @@ const Cta = styled.div`
 type ItemProps = {
   index: number;
   qty: number;
-  name: CraftingComponentNameStrings;
+  name: string;
   onPlusClick: (v: number) => void;
   onMinusClick: (v: number) => void;
   onDeleteClick: (index: number) => void;
