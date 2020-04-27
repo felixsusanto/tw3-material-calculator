@@ -1,10 +1,10 @@
 import * as React from "react";
-import "./styles.css";
+import "styles.css";
 import styled from "styled-components";
-import Tab from "./components/tab";
-import CraftingComponentPanel from "./components/CraftingComponentsPanel";
-import DiagramPanel from "./components/DiagramPanel";
-import "./components/diagramData";
+import Tab from "components/tab";
+import CraftingComponentPanel from "components/CraftingComponentsPanel";
+import DiagramPanel from "components/DiagramPanel";
+import "components/diagramData";
 
 const AppWrapper = styled.div`
   color: #fff;
