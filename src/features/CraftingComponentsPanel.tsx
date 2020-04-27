@@ -1,12 +1,12 @@
 import * as React from "react";
 import styled from "styled-components";
-import SelectComponents, { Select, SelectWrapper } from "./SelectComponents";
+import SelectComponents, { Select, SelectWrapper } from "components/SelectComponents";
 import _ from "lodash";
-import Item from "./Item";
+import Item from "components/Item";
 import {
   craftableComponents,
   bwCraftableComponents
-} from "./craftingComponentData";
+} from "data/craftingComponentData";
 
 const CraftingComponentPanelWrapper = styled.div`
   .form {

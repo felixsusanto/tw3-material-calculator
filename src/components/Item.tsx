@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import CraftingMaterial from "./CraftingMaterial";
-import { CraftingComponentNameStrings } from "./typeData";
-import SelectComponents from "./SelectComponents";
 import styled from "styled-components";
-import { DiagramContext } from "./DiagramPanel";
+import { CraftingComponentNameStrings } from "data/typeData";
+import { DiagramContext } from "features/DiagramPanel";
+import CraftingMaterial from "./CraftingMaterial";
+import SelectComponents from "./SelectComponents";
 
 const ItemWrapper = styled.div`
   margin: 10px 0;
