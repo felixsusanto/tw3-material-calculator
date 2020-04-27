@@ -1,36 +1,4 @@
-import { CraftableItem, CraftingComponentNameStrings, RequiredItem } from "./typeData";
-import _ from 'lodash';
-import diagramData from './diagramData';
-
-type HelperReqArg = [CraftingComponentNameStrings, string, number];
-
-const helper = (
-  name: CraftingComponentNameStrings,
-  img: string,
-  required?: HelperReqArg[]
-): CraftableItem => {
-  const req: RequiredItem[] = required ? required?.map((arr) => {
-    const name = arr[0];
-    const qty = arr[2];
-    return {
-      name,
-      qty
-    };
-  }) : [];
-  return {
-    name,
-    img,
-    req
-  };
-};
-
-type HelperArg = [
-  CraftingComponentNameStrings,
-  string,
-  HelperReqArg[]
-];
-
-export const arrayArgs: HelperArg[] = [
+const vanillaComponents = [
   [
     'LEATHER_SCRAPS',
     'https://vignette.wikia.nocookie.net/witcher/images/d/d7/Tw3_leather_scraps.png/revision/latest?cb=20170216074341',
@@ -514,7 +482,7 @@ export const arrayArgs: HelperArg[] = [
   ],
 ];
 
-const BWarrayArgs: HelperArg[] = [
+const bwComponents = [
   [
     'GREEN_GOLD_PLATE',
     'https://vignette.wikia.nocookie.net/witcher/images/a/ae/Tw3_green_gold_plate.png/revision/latest?cb=20170219080022',
@@ -744,17 +712,7 @@ const BWarrayArgs: HelperArg[] = [
   ],
 ];
 
-const extractName = (arg: HelperArg) => {
-  const [name] = arg;
-  return name;
+module.exports = {
+  vanillaComponents,
+  bwComponents
 };
-
-export const craftableComponents = _.uniq(arrayArgs.map(extractName));
-export const bwCraftableComponents = _.uniq(BWarrayArgs.map(extractName));
-const data: CraftableItem[] = [
-  ...arrayArgs.map(arg => helper(...arg)),
-  ...BWarrayArgs.map(arg => helper(...arg)),
-  ...diagramData
-];
-
-export default data;
