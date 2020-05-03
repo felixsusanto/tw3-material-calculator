@@ -1,10 +1,10 @@
 import React, { createContext } from "react";
-import SelectComponents from "./SelectComponents";
-import { bwArmorSelect } from "./diagramData";
+import SelectComponents from "components/SelectComponents";
+import { bwArmorSelect } from "data/diagramData";
 import { Button } from "./CraftingComponentsPanel";
 import _ from "lodash";
 import styled from "styled-components";
-import Item from "./Item";
+import Item from "components/Item";
 import { selectOptions } from "./CraftingComponentsPanel";
 const PanelWrapper = styled.div`
   .form {

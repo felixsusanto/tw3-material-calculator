@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import _ from "lodash";
 import styled from "styled-components";
-import data from "./craftingComponentData";
 import numeral from "numeral";
-
-import { RequiredItem, CraftableItem } from "./typeData";
+import data from "data/craftingComponentData";
+import { RequiredItem, CraftableItem } from "data/typeData";
 
 const CraftingMaterialWrapper = styled.div`
   display: flex;
@@ -32,7 +31,7 @@ const CraftingMaterialWrapper = styled.div`
       > div:first-child {
         margin-right: 10px;
       }
-    }
+    } 
   }
   main {
     flex: 0 1 160px;
