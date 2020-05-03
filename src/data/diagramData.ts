@@ -1,7 +1,7 @@
-import data from "../data/blood-and-wine_armor";
-import { processRawData } from "./utils";
+import data from "../csv/bwArmor.csv";
+import { processCsv } from "./utils";
 
-export const bwArmor = processRawData(data);
+export const bwArmor = processCsv(data);
 
 export const bwArmorSelect = bwArmor.map(e => e.name);
 

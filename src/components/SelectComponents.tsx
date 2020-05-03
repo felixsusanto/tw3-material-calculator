@@ -46,10 +46,10 @@ const SelectComponents = (props: SelectCompProps) => {
     <SelectWrapper>
       <Select {...props}>
         <option value="">{props.placeholder || "Select Component"}</option>
-        {props.options?.map((el) => {
+        {props.options?.map((el, i) => {
           const [optGroupLabel, goods] = el;
           return (
-            <optgroup label={optGroupLabel}>
+            <optgroup label={optGroupLabel} key={i}>
               {goods.map((el: string) => {
                 return <option key={el} value={el}>{util.titleCase(el)}</option>;
               })}

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { CraftingComponentNameStrings } from "data/typeData";
 import { DiagramContext } from "features/DiagramPanel";
 import CraftingMaterial from "./CraftingMaterial";
 import SelectComponents from "./SelectComponents";
@@ -40,7 +39,7 @@ type ItemProps = {
   onPlusClick: (v: number) => void;
   onMinusClick: (v: number) => void;
   onDeleteClick: (index: number) => void;
-  onChangeComponent: (index: number, v: CraftingComponentNameStrings) => void;
+  onChangeComponent: (index: number, v: string) => void;
 };
 
 const Item = (props: ItemProps) => {
@@ -74,7 +73,7 @@ const Item = (props: ItemProps) => {
           <SelectComponents
             onChange={e => {
               props.onChangeComponent(index, e.currentTarget
-                .value as CraftingComponentNameStrings);
+                .value as string);
             }}
             placeholder="Change Component"
             options={selectOptions}

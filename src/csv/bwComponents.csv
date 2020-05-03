@@ -1,0 +1,26 @@
+name,img,requiredItem
+GREEN_GOLD_PLATE,https://vignette.wikia.nocookie.net/witcher/images/a/ae/Tw3_green_gold_plate.png/revision/latest?cb=20170219080022,2x GREEN_GOLD_INGOT
+GREEN_GOLD_ORE,https://vignette.wikia.nocookie.net/witcher/images/2/22/Tw3_green_gold_ore.png/revision/latest?cb=20170219080021,"4x GOLD_NUGGET
+5x SILVER
+1x UNREFINED_COPPER_ORE"
+GREEN_GOLD_ORE,https://vignette.wikia.nocookie.net/witcher/images/2/22/Tw3_green_gold_ore.png/revision/latest?cb=20170219080021,4x GREEN_GOLD
+GREEN_GOLD_INGOT,https://vignette.wikia.nocookie.net/witcher/images/1/12/Tw3_green_gold_ingot.png/revision/latest?cb=20170219080021,2x GREEN_GOLD_ORE
+ENRICHED_DIMERITIUM_INGOT,https://vignette.wikia.nocookie.net/witcher/images/5/51/Tw3_enriched_dimeritium_ingot.png/revision/latest?cb=20170219074308,2x ENRICHED_DIMERITIUM_ORE
+ENRICHED_DIMERITIUM_PLATE,https://vignette.wikia.nocookie.net/witcher/images/c/c2/Tw3_enriched_dimeritium_plate.png/revision/latest?cb=20170219074309,2x ENRICHED_DIMERITIUM_INGOT
+ENRICHED_DIMERITIUM_ORE,https://vignette.wikia.nocookie.net/witcher/images/5/5d/Tw3_enriched_dimeritium_ore.png/revision/latest?cb=20170219074308,"1x DIMERITIUM_ORE
+1x ORICHALCUM_ORE
+1x ACID_EXTRACT"
+COPPER_INGOT,https://vignette.wikia.nocookie.net/witcher/images/2/27/Tw3_copper_ingot.png/revision/latest?cb=20170219074306,2x COPPER_ORE
+COPPER_ORE,https://vignette.wikia.nocookie.net/witcher/images/f/f0/Tw3_copper_ore.png/revision/latest?cb=20170219074306,5x UNREFINED_COPPER_ORE
+DARK_IRON_PLATE,https://vignette.wikia.nocookie.net/witcher/images/7/77/Tw3_dark_iron_plate.png/revision/latest?cb=20170216064640,1x DARK_IRON_INGOT
+CUPRONICKEL_ORE,https://vignette.wikia.nocookie.net/witcher/images/d/d0/Tw3_cupronickel_ore.png/revision/latest?cb=20170219074307,"3x UNREFINED_COPPER_ORE
+1x HUNK_OF_NICKEL"
+COPPER_PLATE,https://vignette.wikia.nocookie.net/witcher/images/2/22/Tw3_copper_plate.png/revision/latest?cb=20170219074307,2x COPPER_INGOT
+INFUSED_SLYZARD_HIDE,https://vignette.wikia.nocookie.net/witcher/images/7/73/Tw3_infused_slyzard_hide.png/revision/latest?cb=20170219080023,"1x CURED_DRACONID_LEATHER
+1x INFUSED_CRYSTAL"
+NICKEL_ORE,https://vignette.wikia.nocookie.net/witcher/images/1/16/Tw3_nickel_ore.png/revision/latest?cb=20170219080151,5x HUNK_OF_NICKEL
+ORICHALCUM_ORE,https://vignette.wikia.nocookie.net/witcher/images/7/72/Tw3_orichalcum_ore.png/revision/latest?cb=20170219080152,"4x GREEN_GOLD
+3x UNREFINED_COPPER_ORE
+1x HUNK_OF_NICKEL"
+ORICHALCUM_INGOT,https://vignette.wikia.nocookie.net/witcher/images/3/38/Tw3_orichalcum_ingot.png/revision/latest?cb=20170219080151,2x ORICHALCUM_ORE
+ORICHALCUM_PLATE,https://vignette.wikia.nocookie.net/witcher/images/9/9b/Tw3_orichalcum_plate.png/revision/latest?cb=20170219080153,2x ORICHALCUM_INGOT

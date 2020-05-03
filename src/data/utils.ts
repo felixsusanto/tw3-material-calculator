@@ -1,37 +1,35 @@
-import _ from "lodash";
 import { CraftableItem } from "./typeData";
+import Papa from 'papaparse';
 
-interface Structure {
+type RawCsv = {
   name: string;
-  components: string;
   img: string;
-}
-type RawObject = {
-  [key: string]: Structure;
+  requiredItem: string;
 };
-type Img = string;
-type Name = string;
-type Qty = number;
 
-type Output = [Name, Img, [Name, Qty][]];
+type Req = {
+  name: string;
+  qty: number;
+}
 
-export const processRawData = (obj: RawObject): CraftableItem[] => {
-  const values = _.values(obj);
-  const result = values.map((value: Structure) => {
-    const arrComponents = value.components.split("\n");
-    const compsRequired = arrComponents.map((str: string) => {
-      const [qty, name] = str.split("x ");
-      return {
-        name: name.toUpperCase().replace(/ /g, "_"),
-        qty: +qty
-      };
-    });
+export const processCsv = (csv: string): CraftableItem[] => {
+  const res = Papa.parse(csv, { header: true });
+  const result = res.data.map((obj: RawCsv) => {
+    const {name, img, requiredItem} = obj;
+    const req: Req[] = requiredItem.split('\n')
+      .map((str: string) => {
+        const [qty, name] = str.split('x ');
+        return {
+          qty: +qty,
+          name
+        }
+      })
+    ;
     return {
-      name: value.name.toUpperCase().replace(/ /g, "_"),
-      img: value.img.replace(/\/window[^?]+/g, ""),
-      req: compsRequired
+      name,
+      img,
+      req
     };
   });
-  console.log(result);
   return result;
 };
