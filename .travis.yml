@@ -3,12 +3,10 @@ node_js:
   - 12
 jobs:
   include:
-    - stage: unit-test
-      script: npm test
-    - stage: coverage
+    - stage: Unit test
       script: npm run coverage
-    - stage: release
-      script: npm build
+    - stage: Release
+      script: npm run build
       deploy:
         provider: pages
         skip_cleanup: true
