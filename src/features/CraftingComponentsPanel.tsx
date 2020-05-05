@@ -3,10 +3,7 @@ import styled from "styled-components";
 import SelectComponents, { Select, SelectWrapper } from "components/SelectComponents";
 import _ from "lodash";
 import Item from "components/Item";
-import {
-  craftableComponents,
-  bwCraftableComponents
-} from "data/craftingComponentData";
+import { selectOptions } from "features/selectOptions";
 
 const CraftingComponentPanelWrapper = styled.div`
   .form {
@@ -31,11 +28,6 @@ export const Button = styled.button`
   background: transparent;
 `;
 
-export const selectOptions: [string, string[]][] = [
-  ["The Wild Hunt", craftableComponents],
-  ["Blood and Wine", bwCraftableComponents]
-];
-
 class CraftingComponentPanel extends React.Component {
   state: MyState = {
     qty: 1,
@@ -54,11 +46,14 @@ class CraftingComponentPanel extends React.Component {
     clone.push([this.state.componentName, this.state.qty]);
     this.setState({ craftingComponents: clone });
   };
-  onItemQtyChange = (index: number, isPlus: boolean) => (newQty: number) => {
+  onPlusHandler = (newQty: number, index: number) => {
     const clone = _.cloneDeep(this.state);
-    clone.craftingComponents[index][1] = isPlus
-      ? Math.min(newQty, 10)
-      : Math.max(newQty, 1);
+    clone.craftingComponents[index][1] = Math.min(newQty, 10);
+    this.setState(clone);
+  };
+  onMinusHandler = (newQty: number, index: number) => {
+    const clone = _.cloneDeep(this.state);
+    clone.craftingComponents[index][1] = Math.max(newQty, 1);
     this.setState(clone);
   };
   render() {
@@ -69,9 +64,10 @@ class CraftingComponentPanel extends React.Component {
             value={this.state.componentName}
             onChange={this.onSelectChange}
             options={selectOptions}
+            data-testid="select"
           />
           <SelectWrapper>
-            <Select value={this.state.qty} onChange={this.onQtyChange}>
+            <Select value={this.state.qty} onChange={this.onQtyChange} data-testid="qty">
               {Array(10)
                 .fill("")
                 .map((_, i) => {
@@ -87,6 +83,7 @@ class CraftingComponentPanel extends React.Component {
           <Button
             onClick={this.onAdd}
             disabled={this.state.componentName === ""}
+            data-testid="button"
           >
             Add
           </Button>
@@ -99,8 +96,8 @@ class CraftingComponentPanel extends React.Component {
               index={index}
               qty={qty}
               name={name} 
-              onPlusClick={this.onItemQtyChange(index, true)}
-              onMinusClick={this.onItemQtyChange(index, false)}
+              onPlusClick={this.onPlusHandler}
+              onMinusClick={this.onMinusHandler}
               onDeleteClick={() => {
                 const clone = _.cloneDeep(this.state);
                 _.remove(clone.craftingComponents, (elm: CraftingComponent) =>

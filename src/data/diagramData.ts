@@ -1,9 +1,9 @@
 import data from "../csv/bwArmor.csv";
-import { processCsv } from "./utils";
+import { processCsv, extractName } from "./utils";
 
 export const bwArmor = processCsv(data);
 
-export const bwArmorSelect = bwArmor.map(e => e.name);
+export const bwArmorSelect = bwArmor.map(extractName);
 
 const diagramData = [...bwArmor];
 

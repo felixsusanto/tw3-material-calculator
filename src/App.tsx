@@ -1,5 +1,5 @@
 import * as React from "react";
-import "styles.css";
+import "index.css";
 import styled from "styled-components";
 import Tab from "components/tab";
 import CraftingComponentPanel from "features/CraftingComponentsPanel";
@@ -52,6 +52,7 @@ class App extends React.Component {
                     key={i}
                     className={`${this.state.tabActive === e ? "active" : ""}`}
                     onClick={() => this.setState({ tabActive: e })}
+                    data-testid={Tabs[i]}
                   >
                     {e.replace(/_/g, " ")}
                   </Tab>
