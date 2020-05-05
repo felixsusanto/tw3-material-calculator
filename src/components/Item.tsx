@@ -36,8 +36,8 @@ type ItemProps = {
   index: number;
   qty: number;
   name: string;
-  onPlusClick: (v: number) => void;
-  onMinusClick: (v: number) => void;
+  onPlusClick?: (v: number, i: number) => void;
+  onMinusClick?: (v: number, i: number) => void;
   onDeleteClick: (index: number) => void;
   onChangeComponent: (index: number, v: string) => void;
 };
@@ -54,18 +54,18 @@ const Item = (props: ItemProps) => {
             <Cta
               onClick={() => {
                 const res = Math.min(qty + 1, 10);
-                props.onPlusClick(res);
+                props.onPlusClick && props.onPlusClick(res, index);
               }}
             >
-              <i className="fa fa-plus fa-fw fa-sm" />
+              <i data-testid="plus" className="fa fa-plus fa-fw fa-sm" />
             </Cta>
             <Cta
               onClick={() => {
                 const res = Math.max(qty - 1, 1);
-                props.onMinusClick(res);
+                props.onMinusClick && props.onMinusClick(res, index);
               }}
             >
-              <i className="fa fa-minus fa-fw fa-sm" />
+              <i data-testid="minus" className="fa fa-minus fa-fw fa-sm" />
             </Cta>
           </div>
         )}
@@ -77,6 +77,7 @@ const Item = (props: ItemProps) => {
             }}
             placeholder="Change Component"
             options={selectOptions}
+            data-testid="select"
           />
         </div>
         <div>
@@ -85,14 +86,14 @@ const Item = (props: ItemProps) => {
               setState(false);
             }}
           >
-            <i className="fa fa-times fa-fw fa-sm" />
+            <i data-testid="close" className="fa fa-times fa-fw fa-sm" />
           </Cta>
           <Cta
             onClick={() => {
               props.onDeleteClick(index);
             }}
           >
-            <i className="fa fa-trash fa-fw fa-sm" />
+            <i data-testid="delete" className="fa fa-trash fa-fw fa-sm" />
           </Cta>
         </div>
       </div>

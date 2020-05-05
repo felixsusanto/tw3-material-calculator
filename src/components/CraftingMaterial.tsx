@@ -197,7 +197,6 @@ const CraftingMaterial = (props: CompProps) => {
             </React.Fragment>
           );
         })}
-        {false && ""}
       </aside>
     </CraftingMaterialWrapper>
   );

@@ -5,7 +5,8 @@ import { Button } from "./CraftingComponentsPanel";
 import _ from "lodash";
 import styled from "styled-components";
 import Item from "components/Item";
-import { selectOptions } from "./CraftingComponentsPanel";
+import { selectOptions } from "features/selectOptions";
+
 const PanelWrapper = styled.div`
   .form {
     * + * {
@@ -51,8 +52,13 @@ class DiagramPanel extends React.Component {
             onChange={this.onSelectChange}
             placeholder="Select Diagram"
             options={diagramSelectOptions}
+            data-testid="select"
           />
-          <Button onClick={this.onAdd} disabled={this.state.name === ""}>
+          <Button 
+            onClick={this.onAdd} 
+            disabled={this.state.name === ""}
+            data-testid="button"
+          >
             Add
           </Button>
         </div>
@@ -69,8 +75,6 @@ class DiagramPanel extends React.Component {
                 index={index}
                 qty={1}
                 name={name}
-                onPlusClick={console.log}
-                onMinusClick={console.log}
                 onDeleteClick={() => {
                   const clone = _.cloneDeep(this.state);
                   _.remove(clone.diagrams, (elm: string) => elm === name);
@@ -81,6 +85,7 @@ class DiagramPanel extends React.Component {
                   clone.diagrams[index] = val;
                   this.setState(clone);
                 }}
+                data-testid="item"
               />
             );
           })}
