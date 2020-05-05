@@ -1,10 +1,19 @@
 language: node_js
 node_js:
   - 12
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  keep_history: true
-  on:
-    branch: master
+jobs:
+  include:
+    - stage: unit-test
+      script: npm test
+    - stage: coverage
+      script: npm run coverage
+    - stage: release
+      script: npm build
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        github_token: $GITHUB_TOKEN
+        local_dir: build
+        keep_history: true
+        on:
+          branch: master
