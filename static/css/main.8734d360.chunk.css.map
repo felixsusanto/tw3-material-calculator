@@ -1,1 +1,0 @@
-{"version":3,"sources":["/home/travis/build/felixsusanto/tw3-material-calculator/src/index.css"],"names":[],"mappings":"AAAA,KACE,eACF,CACA,KACE,mCACF","file":"main.8734d360.chunk.css","sourcesContent":["body {\n  background: black;\n}\n.App {\n  font-family: \"News Cycle\", sans-serif;\n}\n"]}
