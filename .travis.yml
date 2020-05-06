@@ -1,10 +1,14 @@
 language: node_js
 node_js:
   - 12
+install:
+  - npm install -g codecov
 jobs:
   include:
     - stage: Unit test
-      script: npm run coverage
+      script: 
+        - npm run coverage
+        - codecov
     - stage: Release
       script: npm run build
       deploy:
