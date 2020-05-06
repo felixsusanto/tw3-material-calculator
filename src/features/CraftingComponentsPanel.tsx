@@ -4,6 +4,7 @@ import SelectComponents, { Select, SelectWrapper } from "components/SelectCompon
 import _ from "lodash";
 import Item from "components/Item";
 import { selectOptions } from "features/selectOptions";
+import Empty from "components/Empty";
 
 const CraftingComponentPanelWrapper = styled.div`
   .form {
@@ -88,6 +89,7 @@ class CraftingComponentPanel extends React.Component {
             Add
           </Button>
         </div>
+        {!this.state.craftingComponents.length && <Empty placeholder="Component" />}
         {this.state.craftingComponents.map((args, index) => {
           const [name, qty] = args;
           return (

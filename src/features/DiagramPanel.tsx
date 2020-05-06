@@ -6,6 +6,7 @@ import _ from "lodash";
 import styled from "styled-components";
 import Item from "components/Item";
 import { selectOptions } from "features/selectOptions";
+import Empty from "components/Empty";
 
 const PanelWrapper = styled.div`
   .form {
@@ -22,7 +23,7 @@ const defaultContextValue = {
 
 export const DiagramContext = createContext(defaultContextValue);
 export const diagramSelectOptions: [string, string[]][] = [
-  ["The Wild Hunt", bwArmorSelect]
+  ["Blood and Wine", bwArmorSelect]
 ];
 type CompState = {
   name: string;
@@ -68,6 +69,7 @@ class DiagramPanel extends React.Component {
             selectOptions: diagramSelectOptions
           }}
         >
+          {!this.state.diagrams.length && <Empty placeholder="Diagram" />}
           {this.state.diagrams.map((name, index) => {
             return (
               <Item
