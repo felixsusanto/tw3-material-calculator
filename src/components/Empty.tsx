@@ -18,7 +18,7 @@ const Empty = (props: any) => {
     <div>
       <img src={icon} alt="crafting icon" />
     </div>
-    <p>
+    <p className="sml-mobile">
       Select a <b>{ props.placeholder || 'item' }</b> and press <b>Add</b> to get started. <br />
       Craftable components are expandable, just tap on the 'plus' sign.
     </p>

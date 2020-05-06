@@ -20,25 +20,40 @@ const AppWrapper = styled.div`
   .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 10px;
   }
   .header {
     padding-top: 20px;
     display: flex;
     align-items: center;
+    flex-direction: column;
     img {
       width: 150px;
     }
     h1 {
-      margin-left: 20px;
+      font-size: 18px;
       font-weight: normal;
       text-transform: uppercase;
+      margin-top: 0;
+    }
+    @media(min-width: 768px) {
+      flex-direction: row;
+      h1 {
+        margin-top: 12px;
+        margin-left: 20px;
+        font-size: 2em;
+      }
     }
   }
   footer {
     text-align: center;
     padding: 10px;
   }
-
+  .sml-mobile {
+    @media(max-width: 767px) {
+      font-size: 0.8rem;
+    }
+  }
   .tabs,
   .form {
     * + * {
@@ -98,16 +113,16 @@ class App extends React.Component {
             )}
           </div>
         </div>
-        <footer>
+        <footer className="sml-mobile">
           Created by{' '}
           <a 
             href="https://github.com/felixsusanto"
             rel="external no follow"
           >
             felixsusanto
-          </a>.{' '}
+          </a>.<br />
           Witcher 3, logo &amp; icons are the property of CD PROJEKT RED <br />
-          List is incomplete, any help would be appreciated at {' '}
+          Diagram List is incomplete, any contribution would be appreciated at {' '}
           <a href="https://github.com/felixsusanto/tw3-material-calculator"
             rel="external no follow"
           >
