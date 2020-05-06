@@ -14,7 +14,7 @@ jobs:
       script: npm run build
       deploy:
         provider: pages
-        skip_cleanup: true
+        cleanup: false
         github_token: $GITHUB_TOKEN
         local_dir: build
         keep_history: true

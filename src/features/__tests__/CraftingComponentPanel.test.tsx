@@ -4,6 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 jest.mock("components/SelectComponents");
 jest.mock("components/Item");
+jest.mock("components/Empty");
 
 describe('<CraftingComponentsPanel />', () => {
   it('should render', () => {
