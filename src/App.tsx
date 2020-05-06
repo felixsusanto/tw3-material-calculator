@@ -11,6 +11,9 @@ const AppWrapper = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  a {
+    color: #fff;
+  }
   .App {
     flex: 1;
   }
@@ -96,7 +99,20 @@ class App extends React.Component {
           </div>
         </div>
         <footer>
-          Created by felixsusanto. Witcher 3, logo &amp; icons are the property of CD PROJEKT RED
+          Created by{' '}
+          <a 
+            href="https://github.com/felixsusanto"
+            rel="external no follow"
+          >
+            felixsusanto
+          </a>.{' '}
+          Witcher 3, logo &amp; icons are the property of CD PROJEKT RED <br />
+          List is incomplete, any help would be appreciated at {' '}
+          <a href="https://github.com/felixsusanto/tw3-material-calculator"
+            rel="external no follow"
+          >
+            GitHub
+          </a>
         </footer>
       </AppWrapper>
     );
