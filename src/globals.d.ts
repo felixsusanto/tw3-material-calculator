@@ -5,18 +5,33 @@ interface FieldsObject {
   metric1?: number;
 };
 
-type GA = {
-  send: (send: 'send',
+interface EventParameters {
+  event_category?: string;
+  event_label?: string;
+  transport_type?: string;
+  value?: number;
+  custom_value?: any;
+  event_callback?: () => void;
+}
+
+type GA = (send: 'send',
     event: 'event',
     eventCategory: string,
     eventAction: string,
     eventLabel?: string,
     eventValue?: number,
     fieldsObject?: FieldsObject
-  ) => void;
-}
+  ) => void
+;
+
+type GTag = (
+  event: 'event',
+  eventAction: string,
+  eventParamters: EventParameters
+) => void;
 // declare const ga: undefined | GA;
 
 interface Window {
   ga?: GA;
+  gtag?: GTag;
 }

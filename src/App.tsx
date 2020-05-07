@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Tab from "components/tab";
 import CraftingComponentPanel from "features/CraftingComponentsPanel";
 import DiagramPanel from "features/DiagramPanel";
+import * as gtag from 'analytics/analytics';
 
 const AppWrapper = styled.div`
   color: #fff;
@@ -95,14 +96,18 @@ class App extends React.Component {
             </div>
             <div className="tabs">
               {Tabs.map((e, i) => {
+                const label = e.replace(/_/g, " ");
                 return (
                   <Tab
                     key={i}
                     className={`${this.state.tabActive === e ? "active" : ""}`}
-                    onClick={() => this.setState({ tabActive: e })}
+                    onClick={() => {
+                      this.setState({ tabActive: e });
+                      gtag.gaSendTab(label);
+                    }}
                     data-testid={Tabs[i]}
                   >
-                    {e.replace(/_/g, " ")}
+                    {label}
                   </Tab>
                 );
               })}
@@ -118,6 +123,10 @@ class App extends React.Component {
           <a 
             href="https://github.com/felixsusanto"
             rel="external no follow"
+            onClick={(e) => {
+              e.preventDefault();
+              gtag.getOutboundLink("https://github.com/felixsusanto");
+            }}
           >
             felixsusanto
           </a>.<br />
@@ -125,6 +134,10 @@ class App extends React.Component {
           Diagram List is incomplete, any contribution would be appreciated at {' '}
           <a href="https://github.com/felixsusanto/tw3-material-calculator"
             rel="external no follow"
+            onClick={(e) => {
+              e.preventDefault();
+              gtag.getOutboundLink("https://github.com/felixsusanto/tw3-material-calculator");
+            }}
           >
             GitHub
           </a>

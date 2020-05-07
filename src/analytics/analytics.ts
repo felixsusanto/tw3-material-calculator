@@ -1,35 +1,37 @@
 export const gaSendTab = (tabName: string) => {
-  window.ga && window.ga.send('send', 'event', 'Tab', 'click', tabName);
+  window.gtag && window.gtag('event', 'click', {
+    event_category: 'Tab',
+    event_label: tabName
+  });
 }
 
-export const gaSendEdit = (toggle: 'on' | 'off') => {
-  window.ga && window.ga.send('send', 'event', 'Edit_toggle', 'click', toggle);
+export const getOutboundLink = (url: string) => {
+  window.gtag && window.gtag('event', 'click', {
+    event_category: 'outbound',
+    event_label: url,
+    transport_type: 'beacon',
+    event_callback: () => { document.location.href = url; }
+  });
 }
 
 export const gaSendRemove = (item: string) => {
-  window.ga && window.ga.send('send', 'event', 'Remove', 'click', item);
+  window.gtag && window.gtag('event', 'click', {
+    event_category: 'Remove',
+    event_label: item
+  });
 }
 
-export const gaSendAdd = (btnName: string, item: string, qty?: number) => {
-  window.ga && window.ga.send(
-    'send',
-    'event',
-    'Add',
-    'click',
-    btnName,
-    qty || 1,
-    {
-      dimension1: item
-    }
-  );
+export const gaSendAdd = (item: string, qty?: number) => {
+  window.gtag && window.gtag('event', 'click', {
+    event_category: 'Add',
+    event_label: item,
+    value: qty || 1
+  });
 }
 
 export const gaSendChange = (mainUI: boolean, selectType: string, value: string) => {
-  window.ga && window.ga.send(
-    'send',
-    'event',
-    `Select_${mainUI ? 'main': 'existing'}_${selectType}`,
-    'change',
-    value
-   );
+  window.gtag && window.gtag('event', 'change', {
+    event_category: `Select_${mainUI ? 'main': 'existing'}_${selectType}`,
+    event_label: value
+  });
 }

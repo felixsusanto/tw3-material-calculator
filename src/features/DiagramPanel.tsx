@@ -7,6 +7,7 @@ import styled from "styled-components";
 import Item from "components/Item";
 import { selectOptions } from "features/selectOptions";
 import Empty from "components/Empty";
+import * as gtag from 'analytics/analytics';
 
 const PanelWrapper = styled.div`
   .form {
@@ -37,10 +38,12 @@ class DiagramPanel extends React.Component {
 
   onSelectChange = (e: React.SyntheticEvent<HTMLSelectElement>) => {
     this.setState({ name: e.currentTarget.value });
+    gtag.gaSendChange(true, 'diagram', e.currentTarget.value);
   };
   onAdd = () => {
     const clone = _.cloneDeep(this.state.diagrams);
     clone.push(this.state.name);
+    gtag.gaSendAdd(this.state.name, 1);
     this.setState({ diagrams: clone });
   };
 
@@ -80,11 +83,13 @@ class DiagramPanel extends React.Component {
                 onDeleteClick={() => {
                   const clone = _.cloneDeep(this.state);
                   _.remove(clone.diagrams, (elm: string) => elm === name);
+                  gtag.gaSendRemove(name);
                   this.setState(clone);
                 }}
                 onChangeComponent={(index, val) => {
                   const clone = _.cloneDeep(this.state);
                   clone.diagrams[index] = val;
+                  gtag.gaSendChange(false, 'diagram', val);
                   this.setState(clone);
                 }}
                 data-testid="item"
