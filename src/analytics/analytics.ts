@@ -35,3 +35,10 @@ export const gaSendChange = (mainUI: boolean, selectType: string, value: string)
     event_label: value
   });
 }
+
+export const gaExit = () => {
+  window.gtag && window.gtag('event', 'exit', {
+    event_category: 'exit',
+    event_label: 'exit'
+  });
+}

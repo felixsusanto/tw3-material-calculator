@@ -82,6 +82,12 @@ class App extends React.Component {
     tabActive: Tabs[0]
   };
 
+  componentDidMount() {
+    window.addEventListener('beforeunload', () => {
+      gtag.gaExit();
+    });
+  }
+
   render() {
     const { tabActive } = this.state;
     return (
