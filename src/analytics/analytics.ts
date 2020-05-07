@@ -10,7 +10,7 @@ export const getOutboundLink = (url: string) => {
     event_category: 'outbound',
     event_label: url,
     transport_type: 'beacon',
-    event_callback: () => { document.location.href = url; }
+    event_callback: () => { window.location.assign(url); }
   });
 }
 

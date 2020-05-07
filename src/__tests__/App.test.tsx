@@ -7,8 +7,12 @@ jest.mock('features/DiagramPanel');
 
 describe('<App />', () => {
   it('should render', () => {
-    const { debug, getByTestId } = render(<App />);
+    const { getByTestId } = render(<App />);
     const otherTab = getByTestId("CRAFTING_COMPONENTS");
+    const user = getByTestId("user");
+    const repo = getByTestId("repo");
     fireEvent.click(otherTab);
+    fireEvent.click(user);
+    fireEvent.click(repo);
   });
 });

@@ -127,6 +127,7 @@ class App extends React.Component {
               e.preventDefault();
               gtag.getOutboundLink("https://github.com/felixsusanto");
             }}
+            data-testid="user"
           >
             felixsusanto
           </a>.<br />
@@ -138,6 +139,7 @@ class App extends React.Component {
               e.preventDefault();
               gtag.getOutboundLink("https://github.com/felixsusanto/tw3-material-calculator");
             }}
+            data-testid="repo"
           >
             GitHub
           </a>
