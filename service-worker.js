@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/tw3-material-calculator/precache-manifest.e837eb4ffa47e5e05c53175e27456092.js"
+  "/tw3-material-calculator/precache-manifest.c87517f9181e49b2b0412232fef75b05.js"
 );
 
 self.addEventListener('message', (event) => {
