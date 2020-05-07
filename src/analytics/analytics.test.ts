@@ -9,6 +9,7 @@ describe('window.gtag', () => {
     gtag.gaSendChange(false, 'type', 'value');
     gtag.gaSendRemove('item');
     gtag.gaSendTab('name');
+    gtag.gaExit();
   });
   it('getOutboundLink should work', () => {
     (window.gtag as jest.Mock<any>).mockImplementation((_, __, fields) => {
