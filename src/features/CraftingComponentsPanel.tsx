@@ -5,6 +5,7 @@ import _ from "lodash";
 import Item from "components/Item";
 import { selectOptions } from "features/selectOptions";
 import Empty from "components/Empty";
+import * as gtag from 'analytics/analytics';
 
 const CraftingComponentPanelWrapper = styled.div`
   .form {
@@ -38,23 +39,31 @@ class CraftingComponentPanel extends React.Component {
 
   onSelectChange = (e: React.SyntheticEvent<HTMLSelectElement>) => {
     this.setState({ componentName: e.currentTarget.value });
+    gtag.gaSendChange(true, 'components', e.currentTarget.value);
   };
   onQtyChange = (e: React.SyntheticEvent<HTMLSelectElement>) => {
-    this.setState({ qty: +e.currentTarget.value });
+    const qty = +e.currentTarget.value;
+    gtag.gaSendChange(true, 'quantity', e.currentTarget.value); 
+    this.setState({ qty });
   };
   onAdd = () => {
     const clone = _.cloneDeep(this.state.craftingComponents);
     clone.push([this.state.componentName, this.state.qty]);
+    gtag.gaSendAdd(this.state.componentName, this.state.qty);
     this.setState({ craftingComponents: clone });
   };
   onPlusHandler = (newQty: number, index: number) => {
     const clone = _.cloneDeep(this.state);
-    clone.craftingComponents[index][1] = Math.min(newQty, 10);
+    const newValidatedQty = Math.min(newQty, 10);
+    clone.craftingComponents[index][1] = newValidatedQty;
+    gtag.gaSendChange(true, 'plus', newValidatedQty+''); 
     this.setState(clone);
   };
   onMinusHandler = (newQty: number, index: number) => {
     const clone = _.cloneDeep(this.state);
-    clone.craftingComponents[index][1] = Math.max(newQty, 1);
+    const newValidatedQty = Math.max(newQty, 1)
+    clone.craftingComponents[index][1] = newValidatedQty;
+    gtag.gaSendChange(true, 'minus', newValidatedQty+''); 
     this.setState(clone);
   };
   render() {
@@ -105,11 +114,13 @@ class CraftingComponentPanel extends React.Component {
                 _.remove(clone.craftingComponents, (elm: CraftingComponent) =>
                   _.isEqual(clone.craftingComponents[index], elm)
                 );
+                gtag.gaSendRemove(name);
                 this.setState(clone);
               }}
               onChangeComponent={(index, val) => {
                 const clone = _.cloneDeep(this.state);
                 clone.craftingComponents[index][0] = val;
+                gtag.gaSendChange(false, 'component', val);
                 this.setState(clone);
               }}
             />
